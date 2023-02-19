@@ -1,5 +1,5 @@
 class Item {
-  final String id;
+  final num id;
   final String name;
   final String desc;
   final num price;
@@ -7,11 +7,26 @@ class Item {
 
   Item(this.id, this.name, this.desc, this.price, this.image);
 
-  
+  factory Item.fromMap(Map<String, dynamic> map){
+    return Item(
+      map["id"],
+      map["title"],
+      map["description"],
+      map["price"],
+      map["thumbnail"],
+    );
+  }
+
+  toMap() =>{
+    "id": id,
+    "name": name,
+    "desc": desc,
+    "price": price,
+    "image": image
+  };
 }
+
 class CatalogueItems {
-  static final items = [
-    Item("1", "iPhone 9", "An apple mobile which is nothing like apple", 549,
-        "https://i.dummyjson.com/data/products/1/1.jpg")
+  static List<Item> items = [
   ];
 }
