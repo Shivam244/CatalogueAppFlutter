@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:hello_flutter/models/catalogue.dart';
 import 'package:hello_flutter/widgets/drawer.dart';
+
+import '../widgets/itemwidget.dart';
 
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    bringVegitables(thella: true);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -15,12 +17,13 @@ class HomePage extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
       ),
-      body: Center(
-        child: Container(child: Text("Welcome to flutter app")),
+      body: ListView.builder(
+        itemCount: CatalogueItems.items.length,
+        itemBuilder: (context, index) {
+          return ItemWidget(item: CatalogueItems.items[index]);
+        },
       ),
       drawer: AppDrawer(),
     );
   }
-
-  bringVegitables({required bool thella, int rupees = 10}) {}
 }
